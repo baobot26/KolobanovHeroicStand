@@ -13,10 +13,11 @@
 #include<string>
 #include<algorithm>
 #include<cmath>
-
+#include<bitset>
+#include<cstring>
 // define something global
-#define SCREEN_WIDTH 1368
-#define SCREEN_HEIGHT 768
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
 #define SCREEN_TITLE "Tank Game"
 #define DEADZONE 8000
 
