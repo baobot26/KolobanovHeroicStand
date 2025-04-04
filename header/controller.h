@@ -23,6 +23,7 @@ public:
     float getLeftJoystickY();
     float getleftTrigger();
     float getrightTrigger();
+    bool getButtonState(Uint8 button);
 };
 
 #endif // CONTROLLER_H

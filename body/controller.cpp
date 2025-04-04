@@ -61,3 +61,9 @@ float Controller::getrightTrigger() {
     }
     return 0.0f;
 }
+bool Controller::getButtonState(Uint8 button) {
+    if (gameController) {
+        return SDL_GameControllerGetButton(gameController, static_cast<SDL_GameControllerButton>(button));
+    }
+    return false;
+}

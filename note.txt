@@ -5,10 +5,13 @@ g++ -Iheader -Isrc/include -c body/enemy.cpp
 g++ -Iheader -Isrc/include -c body/music.cpp
 g++ -Iheader -Isrc/include -c body/tank.cpp
 g++ -Iheader -Isrc/include -c main.cpp
-g++ -Iheader -Isrc/include -c body/menu.cpp
+g++ -Iheader -Isrc/include -c body/game.cpp
+g++ -Iheader -Isrc/include -c body/endstate.cpp
+g++ -Iheader -Isrc/include -c body/gamestate.cpp
+g++ -Iheader -Isrc/include -c body/pausestate.cpp
 
 link object
-g++ main.o bullet.o enemy.o controller.o music.o menu.o tank.o -o game.exe -Lsrc/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+g++ main.o bullet.o enemy.o controller.o music.o menu.o tank.o game.o endstate.o gamestate.o pausestate.o -o game.exe -Lsrc/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 run exe
 .\game.exe
