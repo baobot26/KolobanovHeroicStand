@@ -29,13 +29,6 @@ void Controller::close() {
     }
 }
 
-bool Controller::isButtonPressed(Button button) {
-    if (gameController) {
-        return SDL_GameControllerGetButton(gameController, static_cast<SDL_GameControllerButton>(button));
-    }
-    return false;
-}
-
 float Controller::getLeftJoystickX() {
     if (gameController) {
         return SDL_GameControllerGetAxis(gameController, SDL_CONTROLLER_AXIS_LEFTX) / 32767.0f;

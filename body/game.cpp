@@ -12,24 +12,24 @@ SDL_Renderer* renderer = nullptr;
 
 void initSDL() {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMECONTROLLER) < 0) {
-        std::cerr << "Lỗi khởi tạo SDL: " << SDL_GetError() << std::endl;
+        std::cerr << "SDL_init: " << SDL_GetError() << std::endl;
         exit(1);
     }
-    window = SDL_CreateWindow("Tank Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, 0);
+    window = SDL_CreateWindow("Kolobanov Heroic Stand", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, 0);
     if (!window) {
-        std::cerr << "Lỗi tạo cửa sổ: " << SDL_GetError() << std::endl;
+        std::cerr << "Create Window: " << SDL_GetError() << std::endl;
         SDL_Quit();
         exit(1);
     }
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!renderer) {
-        std::cerr << "Lỗi tạo renderer: " << SDL_GetError() << std::endl;
+        std::cerr << "Create Renderer: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
         SDL_Quit();
         exit(1);
     }
     if (TTF_Init() < 0) {
-        std::cerr << "Lỗi khởi tạo TTF: " << TTF_GetError() << std::endl;
+        std::cerr << "TTF_init: " << TTF_GetError() << std::endl;
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         SDL_Quit();
@@ -48,7 +48,7 @@ bool runGame(Controller& controller, Music& music, TTF_Font* font) {
     Tank tank(0, 300, 5.0f, 50.0f, 30.0f);
     std::vector<Bullet*> bullets;
     std::vector<Enemy*> enemies;
-    int spawnTimer = 60;
+    int spawnTimer = 200;
     bool canFire = true;
     bool paused = false;
     bool gameOver = false;
@@ -81,7 +81,7 @@ bool runGame(Controller& controller, Music& music, TTF_Font* font) {
         }
 
         if (paused) {
-            int choice = pauseMenu.update(controller); // Loại bỏ keyboardState
+            int choice = pauseMenu.update(controller); 
             if (choice != -1) {
                 if (choice == 0) paused = false; // Resume
                 else if (choice == 1) { // Restart
@@ -109,7 +109,7 @@ bool runGame(Controller& controller, Music& music, TTF_Font* font) {
             SDL_RenderPresent(renderer);
         } else if (gameOver) {
             gameOverMenu.setScore(score);
-            int choice = gameOverMenu.update(controller); // Loại bỏ keyboardState
+            int choice = gameOverMenu.update(controller); 
             if (choice != -1) {
                 if (choice == 0) { // Restart
                     for (auto bullet : bullets) delete bullet;

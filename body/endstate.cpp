@@ -12,7 +12,7 @@ void EndState::addOption(const std::string& option) {
 int EndState::update(Controller& controller) {
     static Uint32 lastUpdate = 0;
     Uint32 currentTime = SDL_GetTicks();
-    if (currentTime - lastUpdate < 150) return -1; // Giới hạn tần suất (150ms)
+    if (currentTime - lastUpdate < 150) return -1; // limit frequency of updates(150ms)
     lastUpdate = currentTime;
 
     if (controller.getButtonState(SDL_CONTROLLER_BUTTON_DPAD_UP))

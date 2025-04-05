@@ -14,7 +14,7 @@ Music::~Music() {
 
 void Music::initMixer() {
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-        std::cerr << "Lỗi khởi tạo mixer: " << Mix_GetError() << std::endl;
+        std::cerr << "OpenAudio error: " << Mix_GetError() << std::endl;
     }
 }
 
@@ -35,11 +35,11 @@ void Music::playNext() {
     }
     music = Mix_LoadMUS(playlist[currentTrack].c_str());
     if (!music) {
-        std::cerr << "Lỗi load nhạc: " << Mix_GetError() << std::endl;
+        std::cerr << "Loading error: " << Mix_GetError() << std::endl;
         return;
     }
     if (Mix_PlayMusic(music, 1) == -1) {
-        std::cerr << "Lỗi phát nhạc: " << Mix_GetError() << std::endl;
+        std::cerr << "Playing error: " << Mix_GetError() << std::endl;
     }
     currentTrack = (currentTrack + 1) % playlist.size();
 }

@@ -17,7 +17,7 @@ public:
 
     GameState(SDL_Renderer* rend, TTF_Font* f, int posX, int posY, int btnWidth, int btnHeight);
     void addOption(const std::string& option);
-    bool update(Controller& controller); // Trả về true nếu có lựa chọn
+    bool update(Controller& controller); // return true if selected
     void draw();
     int getSelected() const { return selected; }
 };

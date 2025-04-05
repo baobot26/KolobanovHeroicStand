@@ -11,7 +11,7 @@ void GameState::addOption(const std::string& option) {
 bool GameState::update(Controller& controller) {
     static Uint32 lastUpdate = 0;
     Uint32 currentTime = SDL_GetTicks();
-    if (currentTime - lastUpdate < 150) return false; // Giới hạn tần suất cập nhật (150ms)
+    if (currentTime - lastUpdate < 150) return false; // limit frequency of updates(150ms)
     lastUpdate = currentTime;
 
     if (controller.getButtonState(SDL_CONTROLLER_BUTTON_DPAD_UP))
